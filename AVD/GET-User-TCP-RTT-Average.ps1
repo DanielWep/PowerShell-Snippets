@@ -14,7 +14,7 @@ $i=0
 while ($i -ne 10){
    Write-Progress -Activity "Collecting Counters (10 times)" -PercentComplete $i -Status "Collecting"
    Start-Sleep -Milliseconds 100 
-   $Counter = Get-Counter -Counter ('\\azwprdwvdiwe001\remotefx network(' + $Session[0] + ' '+ $Session[1]+ ')\current tcp rtt')
+   $Counter = Get-Counter -Counter ('\\' + $env:COMPUTERNAME +'\remotefx network(' + $Session[0] + ' '+ $Session[1]+ ')\current tcp rtt')
    Start-Sleep -Seconds 10
    $Sum = $Sum + $Counter.CounterSamples.CookedValue
    $i++
